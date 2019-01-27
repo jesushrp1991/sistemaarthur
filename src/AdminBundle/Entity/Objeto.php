@@ -9,9 +9,12 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table()
  * @ORM\Entity
+ * @InheritanceType("JOINED")
+ * @DiscriminatorColumn(name="discr", type="string")
+ * @DiscriminatorMap({"objeto" = "Objeto", "miscelanea" = "Miscelanea", "movil" = "Movil",})
  */
-class Objeto
-{
+class Objeto {
+
     /**
      * @var integer
      *
@@ -49,14 +52,12 @@ class Objeto
      */
     private $tipo;
 
-
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -66,8 +67,7 @@ class Objeto
      * @param integer $cantidadenstock
      * @return Objeto
      */
-    public function setCantidadenstock($cantidadenstock)
-    {
+    public function setCantidadenstock($cantidadenstock) {
         $this->cantidadenstock = $cantidadenstock;
 
         return $this;
@@ -78,8 +78,7 @@ class Objeto
      *
      * @return integer 
      */
-    public function getCantidadenstock()
-    {
+    public function getCantidadenstock() {
         return $this->cantidadenstock;
     }
 
@@ -89,8 +88,7 @@ class Objeto
      * @param float $preciocompra
      * @return Objeto
      */
-    public function setPreciocompra($preciocompra)
-    {
+    public function setPreciocompra($preciocompra) {
         $this->preciocompra = $preciocompra;
 
         return $this;
@@ -101,8 +99,7 @@ class Objeto
      *
      * @return float 
      */
-    public function getPreciocompra()
-    {
+    public function getPreciocompra() {
         return $this->preciocompra;
     }
 
@@ -112,8 +109,7 @@ class Objeto
      * @param float $precioventa
      * @return Objeto
      */
-    public function setPrecioventa($precioventa)
-    {
+    public function setPrecioventa($precioventa) {
         $this->precioventa = $precioventa;
 
         return $this;
@@ -124,8 +120,7 @@ class Objeto
      *
      * @return float 
      */
-    public function getPrecioventa()
-    {
+    public function getPrecioventa() {
         return $this->precioventa;
     }
 
@@ -135,8 +130,7 @@ class Objeto
      * @param string $tipo
      * @return Objeto
      */
-    public function setTipo($tipo)
-    {
+    public function setTipo($tipo) {
         $this->tipo = $tipo;
 
         return $this;
@@ -147,8 +141,8 @@ class Objeto
      *
      * @return string 
      */
-    public function getTipo()
-    {
+    public function getTipo() {
         return $this->tipo;
     }
+
 }
