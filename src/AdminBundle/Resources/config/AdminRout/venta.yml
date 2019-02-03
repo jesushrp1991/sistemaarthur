@@ -1,0 +1,15 @@
+venta_add:
+  path:     /add/
+  defaults: { _controller: AdminBundle:VentaTransaction:ventaAdd }
+
+venta_edit:
+  path:     /edit/{id}
+  defaults: { _controller: AdminBundle:VentaTransaction:ventaEdit }
+
+venta_show:
+  path:     /show/
+  defaults: { _controller: AdminBundle:VentaTransaction:ventaShow }
+
+venta_delete:
+  path:     /delete/{id}/
+  defaults: { _controller: AdminBundle:VentaTransaction:ventaDelete }

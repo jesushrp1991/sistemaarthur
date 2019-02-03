@@ -1,0 +1,19 @@
+categoria_add:
+  path:     /add/
+  defaults: { _controller: AdminBundle:Categoria:categoriaAdd }
+
+categoria_delete:
+  path:     /delete/{id}/
+  defaults: { _controller: AdminBundle:Categoria:categoriaDelete }
+
+categoria_edit:
+  path:     /edit/{id}/
+  defaults: { _controller: AdminBundle:Categoria:categoriaEdit }
+
+categoria_show:
+  path:     /show/
+  defaults: { _controller: AdminBundle:Categoria:categoriaShow }
+
+categoria_get_especificaciones:
+  path:     /get/especificaciones/
+  defaults: { _controller: AdminBundle:Categoria:categoriaGetEspecficaciones }

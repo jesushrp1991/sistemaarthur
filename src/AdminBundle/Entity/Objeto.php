@@ -3,15 +3,16 @@
 namespace AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Objeto
  *
- * @ORM\Table()
+ * @ORM\Table(name="objeto")
  * @ORM\Entity
- * @InheritanceType("JOINED")
- * @DiscriminatorColumn(name="discr", type="string")
- * @DiscriminatorMap({"objeto" = "Objeto", "miscelanea" = "Miscelanea", "movil" = "Movil",})
+ * @ORM\InheritanceType("JOINED")
+ * @ORM\DiscriminatorColumn(name="discr", type="string")
+ * @ORM\DiscriminatorMap({"objeto" = "Objeto", "miscelanea" = "Miscelanea", "movil" = "Movil"})
  */
 class Objeto {
 
@@ -22,35 +23,38 @@ class Objeto {
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="cantidadenstock", type="integer")
      */
-    private $cantidadenstock;
+    protected $cantidadenstock;
 
     /**
      * @var float
      *
      * @ORM\Column(name="preciocompra", type="float")
      */
-    private $preciocompra;
+    protected $preciocompra;
 
     /**
      * @var float
      *
      * @ORM\Column(name="precioventa", type="float")
      */
-    private $precioventa;
+    protected $precioventa;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="tipo", type="string", length=255)
+     * @ORM\OneToMany(targetEntity= "AdminBundle\Entity\VentaTransaction", mappedBy="objeto")
      */
-    private $tipo;
+    protected $ventatransactiones;
+
+    /**
+     * @ORM\OneToMany(targetEntity= "AdminBundle\Entity\CompraTransaction", mappedBy="objeto")
+     */
+    protected $compratransactiones;
 
     /**
      * Get id
@@ -125,24 +129,78 @@ class Objeto {
     }
 
     /**
-     * Set tipo
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->ventatransactiones = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->compratransactiones = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->cantidadenstock = 0;
+    }
+
+    /**
+     * Add ventatransactiones
      *
-     * @param string $tipo
+     * @param \AdminBundle\Entity\VentaTransaction $ventatransactiones
      * @return Objeto
      */
-    public function setTipo($tipo) {
-        $this->tipo = $tipo;
-
+    public function addVentatransactione(\AdminBundle\Entity\VentaTransaction $ventatransactiones)
+    {
+        $this->ventatransactiones[] = $ventatransactiones;
+    
         return $this;
     }
 
     /**
-     * Get tipo
+     * Remove ventatransactiones
      *
-     * @return string 
+     * @param \AdminBundle\Entity\VentaTransaction $ventatransactiones
      */
-    public function getTipo() {
-        return $this->tipo;
+    public function removeVentatransactione(\AdminBundle\Entity\VentaTransaction $ventatransactiones)
+    {
+        $this->ventatransactiones->removeElement($ventatransactiones);
     }
 
+    /**
+     * Get ventatransactiones
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getVentatransactiones()
+    {
+        return $this->ventatransactiones;
+    }
+
+    /**
+     * Add compratransactiones
+     *
+     * @param \AdminBundle\Entity\CompraTransaction $compratransactiones
+     * @return Objeto
+     */
+    public function addCompratransactione(\AdminBundle\Entity\CompraTransaction $compratransactiones)
+    {
+        $this->compratransactiones[] = $compratransactiones;
+    
+        return $this;
+    }
+
+    /**
+     * Remove compratransactiones
+     *
+     * @param \AdminBundle\Entity\CompraTransaction $compratransactiones
+     */
+    public function removeCompratransactione(\AdminBundle\Entity\CompraTransaction $compratransactiones)
+    {
+        $this->compratransactiones->removeElement($compratransactiones);
+    }
+
+    /**
+     * Get compratransactiones
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCompratransactiones()
+    {
+        return $this->compratransactiones;
+    }
 }

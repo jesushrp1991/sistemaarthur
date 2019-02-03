@@ -49,6 +49,10 @@ class DineroEnCasaTransaction
      */
     private $credito;
 
+    public function __construct()
+    {
+        $this->credito = false;
+    }
 
     /**
      * Get id

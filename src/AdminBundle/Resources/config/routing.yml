@@ -1,3 +1,47 @@
-admin_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: AdminBundle:Default:index }
+categoria:
+    resource: "@AdminBundle/Resources/config/AdminRout/categoria.yml"
+    prefix: /categoria
+
+usuario:
+    resource: "@AdminBundle/Resources/config/AdminRout/usuario.yml"
+    prefix: /usuario
+
+especificacion:
+    resource: "@AdminBundle/Resources/config/AdminRout/especificacion.yml"
+    prefix: /especificacion
+
+tarjetatransaction:
+    resource: "@AdminBundle/Resources/config/AdminRout/tarjeta.yml"
+    prefix: /trajeta
+
+dineroencasatransaction:
+    resource: "@AdminBundle/Resources/config/AdminRout/dineroencasa.yml"
+    prefix: /dineroencasa
+
+deudatransaction:
+    resource: "@AdminBundle/Resources/config/AdminRout/deuda.yml"
+    prefix: /deuda
+
+gastotransaction:
+    resource: "@AdminBundle/Resources/config/AdminRout/gasto.yml"
+    prefix: /gasto
+
+movil:
+    resource: "@AdminBundle/Resources/config/AdminRout/movil.yml"
+    prefix: /movil
+
+miscelanea:
+    resource: "@AdminBundle/Resources/config/AdminRout/miscelanea.yml"
+    prefix: /miscelanea
+
+comprartransaction:
+    resource: "@AdminBundle/Resources/config/AdminRout/comprar.yml"
+    prefix: /comprar
+
+ventatransaction:
+    resource: "@AdminBundle/Resources/config/AdminRout/venta.yml"
+    prefix: /venta
+
+default:
+    resource: "@AdminBundle/Resources/config/AdminRout/default.yml"
+    prefix: /default

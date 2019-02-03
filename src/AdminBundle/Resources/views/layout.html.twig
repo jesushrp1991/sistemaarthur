@@ -1,0 +1,66 @@
+{% extends '::adminbase.html.twig' %}
+
+{% block sidemenu %}
+    <nav id="sidebar">
+        <div id="main-menu">
+            <ul class="sidebar-nav">
+                <li class="usuario">
+                    <a href="{{ path('usuario_show') }}"><i class="fa fa-user"></i><span
+                                class="sidebar-text">Usuarios</span></a>
+                </li>
+                <li class="movil">
+                    <a href="{{ path('movil_show') }}"><i class="fa fa-phone"></i><span
+                                class="sidebar-text">Móviles</span></a>
+                </li>
+                <li class="miscelanea">
+                    <a href="{{ path('miscelanea_show') }}"><i class="fa fa-rocket"></i><span
+                                class="sidebar-text">Miscelaneas</span></a>
+                </li>
+                <li id="transaccion">
+                    <a href="#"><i class="fa fa-money"></i><span class="sidebar-text">Transacciones</span><span
+                                class="fa arrow"></span></a>
+                    <ul class="submenu collapse">
+                        <li class="dineroencasa">
+                            <a href="{{ path('dineroencasa_show') }}"><i class="fa fa-money"></i><span
+                                        class="sidebar-text">Dinero en casa</span></a>
+                        </li>
+                        <li class="deuda">
+                            <a href="{{ path('deuda_show') }}"><i class="fa fa-money"></i><span
+                                        class="sidebar-text">Deudas</span></a>
+                        </li>
+                        <li class="gasto">
+                            <a href="{{ path('gasto_show') }}"><i class="fa fa-money"></i><span
+                                        class="sidebar-text">Gastos</span></a>
+                        </li>
+                        <li class="tarjeta">
+                            <a href="{{ path('tarjeta_show') }}"><i class="fa fa-money"></i><span
+                                        class="sidebar-text">Tarjetas</span></a>
+                        </li>
+                        <li class="venta">
+                            <a href="{{ path('venta_show') }}"><i class="fa fa-money"></i><span
+                                        class="sidebar-text">Ventas</span></a>
+                        </li>
+                        <li class="comprar">
+                            <a href="{{ path('comprar_show') }}"><i class="fa fa-money"></i><span
+                                        class="sidebar-text">Compras</span></a>
+                        </li>
+                    </ul>
+                </li>
+                <li id="config">
+                    <a href="#"><i class="fa fa-cogs"></i><span class="sidebar-text">Configuración</span><span
+                                class="fa arrow"></span></a>
+                    <ul class="submenu collapse">
+                        <li class="categoria">
+                            <a href="{{ path('categoria_show') }}"><i class="fa fa-cog"></i><span
+                                        class="sidebar-text">Categorías</span></a>
+                        </li>
+                        <li class="especificacion">
+                            <a href="{{ path('especificacion_show') }}"><i class="fa fa-cog"></i><span
+                                        class="sidebar-text">Especificaciones</span></a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+{% endblock %}

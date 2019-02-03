@@ -1,0 +1,3 @@
+objeto_get_datos:
+  path:     /objeto/datos/
+  defaults: { _controller: AdminBundle:Default:objetoGetDatos }

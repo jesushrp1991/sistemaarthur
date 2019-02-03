@@ -3,6 +3,8 @@
 namespace AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\Role\Role;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * User
@@ -10,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity
  */
-class User
+class User implements UserInterface
 {
     /**
      * @var integer
@@ -205,10 +207,55 @@ class User
     /**
      * Get gastos
      *
-     * @return float 
+     * @return float
      */
     public function getGastos()
     {
         return $this->gastos;
+    }
+
+    public function serialize()
+    {
+        // TODO: Implement serialize() method.
+        return serialize(array(
+            $this->id,
+            $this->name,
+            $this->password
+        ));
+
+    }
+
+    public function unserialize($serialized)
+    {
+        // TODO: Implement unserialize() method.
+        list (
+            $this->id,
+            $this->name,
+            $this->password) = unserialize($serialized);
+
+    }
+
+    public function getRoles()
+    {
+        // TODO: Implement getRoles() method.
+        return array($this->getRole());
+    }
+
+    public function getSalt()
+    {
+        // TODO: Implement getSalt() method.
+        return false;
+    }
+
+    public function getUsername()
+    {
+        // TODO: Implement getUsername() method.
+        return $this->getName();
+    }
+
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
+        return false;
     }
 }

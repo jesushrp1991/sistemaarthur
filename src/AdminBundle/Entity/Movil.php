@@ -7,198 +7,187 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Movil
  *
- * @ORM\Table()
+ * @ORM\Table(name="movil")
  * @ORM\Entity
  */
 class Movil extends Objeto
 {
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
-
+    //Propiedades de Movil----------------------------------------------------------------------
     /**
      * @var string
      *
      * @ORM\Column(name="marca", type="string", length=255)
      */
-    private $marca;
+    protected $marca;
 
     /**
      * @var string
      *
      * @ORM\Column(name="modelo", type="string", length=255)
      */
-    private $modelo;
+    protected $modelo;
 
     /**
      * @var float
      *
      * @ORM\Column(name="frontmpcam", type="float")
      */
-    private $frontmpcam;
+    protected $frontmpcam;
 
     /**
      * @var float
      *
      * @ORM\Column(name="backmpcam", type="float")
      */
-    private $backmpcam;
+    protected $backmpcam;
 
     /**
      * @var float
      *
      * @ORM\Column(name="androidversion", type="float")
      */
-    private $androidversion;
+    protected $androidversion;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="sensorhuella", type="boolean")
      */
-    private $sensorhuella;
+    protected $sensorhuella;
 
     /**
      * @var string
      *
      * @ORM\Column(name="cpu", type="string", length=255)
      */
-    private $cpu;
+    protected $cpu;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="cpucores", type="integer")
      */
-    private $cpucores;
+    protected $cpucores;
 
     /**
      * @var float
      *
      * @ORM\Column(name="cpuspeed", type="float")
      */
-    private $cpuspeed;
+    protected $cpuspeed;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="baterycapmah", type="integer")
      */
-    private $baterycapmah;
+    protected $baterycapmah;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="baterycargarapida", type="boolean")
      */
-    private $baterycargarapida;
+    protected $baterycargarapida;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="baterycargainalambrica", type="boolean")
      */
-    private $baterycargainalambrica;
+    protected $baterycargainalambrica;
 
     /**
      * @var float
      *
      * @ORM\Column(name="ram", type="float")
      */
-    private $ram;
+    protected $ram;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="almacenamiento", type="integer")
      */
-    private $almacenamiento;
+    protected $almacenamiento;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="microsd", type="integer")
      */
-    private $microsd;
+    protected $microsd;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="screenresolutionwidth", type="integer")
      */
-    private $screenresolutionwidth;
+    protected $screenresolutionwidth;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="screenresolutionheight", type="integer")
      */
-    private $screenresolutionheight;
+    protected $screenresolutionheight;
 
     /**
      * @var string
      *
      * @ORM\Column(name="screentipo", type="string", length=255)
      */
-    private $screentipo;
+    protected $screentipo;
 
     /**
      * @var float
      *
      * @ORM\Column(name="screensize", type="float")
      */
-    private $screensize;
+    protected $screensize;
 
     /**
      * @var string
      *
      * @ORM\Column(name="screenprotection", type="string", length=255)
      */
-    private $screenprotection;
+    protected $screenprotection;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="screendensity", type="bigint")
+     */
+    protected $screendensity;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="accesoriocable", type="boolean")
      */
-    private $accesoriocable;
+    protected $accesoriocable;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="accesoriocargador", type="boolean")
      */
-    private $accesoriocargador;
+    protected $accesoriocargador;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="accesoriomanoslibres", type="boolean")
      */
-    private $accesoriomanoslibres;
+    protected $accesoriomanoslibres;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="waterresistant", type="boolean")
      */
-    private $waterresistant;
-
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
+    protected $waterresistant;
+    //Funciones de Movil-------------------------------------------------------------------------------
 
     /**
      * Set marca
@@ -750,5 +739,33 @@ class Movil extends Objeto
     public function getWaterresistant()
     {
         return $this->waterresistant;
+    }
+
+    public function __toString()
+    {
+        return $this->getMarca() . ' ' . $this->getModelo();
+    }
+
+    /**
+     * Set screendensity
+     *
+     * @param integer $screendensity
+     * @return Movil
+     */
+    public function setScreendensity($screendensity)
+    {
+        $this->screendensity = $screendensity;
+    
+        return $this;
+    }
+
+    /**
+     * Get screendensity
+     *
+     * @return integer 
+     */
+    public function getScreendensity()
+    {
+        return $this->screendensity;
     }
 }

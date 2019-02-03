@@ -29,9 +29,8 @@ class CompraTransaction
     private $fechaHora;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="objeto", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity = "AdminBundle\Entity\Objeto", inversedBy = "compratransactiones")
+     * @ORM\JoinColumn(name="objeto_id", referencedColumnName="id", onDelete = "CASCADE")
      */
     private $objeto;
 
@@ -55,7 +54,6 @@ class CompraTransaction
      * @ORM\Column(name="proveedor", type="string", length=255)
      */
     private $proveedor;
-
 
     /**
      * Get id
@@ -88,29 +86,6 @@ class CompraTransaction
     public function getFechaHora()
     {
         return $this->fechaHora;
-    }
-
-    /**
-     * Set objeto
-     *
-     * @param string $objeto
-     * @return CompraTransaction
-     */
-    public function setObjeto($objeto)
-    {
-        $this->objeto = $objeto;
-
-        return $this;
-    }
-
-    /**
-     * Get objeto
-     *
-     * @return string 
-     */
-    public function getObjeto()
-    {
-        return $this->objeto;
     }
 
     /**
@@ -180,5 +155,28 @@ class CompraTransaction
     public function getProveedor()
     {
         return $this->proveedor;
+    }
+
+    /**
+     * Set objeto
+     *
+     * @param \AdminBundle\Entity\Objeto $objeto
+     * @return CompraTransaction
+     */
+    public function setObjeto(\AdminBundle\Entity\Objeto $objeto = null)
+    {
+        $this->objeto = $objeto;
+    
+        return $this;
+    }
+
+    /**
+     * Get objeto
+     *
+     * @return \AdminBundle\Entity\Objeto 
+     */
+    public function getObjeto()
+    {
+        return $this->objeto;
     }
 }

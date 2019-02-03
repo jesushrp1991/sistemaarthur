@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+{#<!--[if lt IE 7]>#}
+{#<html class="no-js sidebar-large lt-ie9 lt-ie8 lt-ie7"> <![endif]-->#}
+{#<!--[if IE 7]>#}
+{#<html class="no-js sidebar-large lt-ie9 lt-ie8"> <![endif]-->#}
+{#<!--[if IE 8]>#}
+{#<html class="no-js sidebar-large lt-ie9"> <![endif]-->#}
+<!--[if gt IE 8]><!-->
+<html class="no-js sidebar-large" xmlns="http://www.w3.org/1999/html"> <!--<![endif]-->
+
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8"/><!-- /Added by HTTrack -->
+<head>
+    <!-- BEGIN META SECTION -->
+    <meta charset="utf-8">
+    <title>Control de Articulos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="description"/>
+    <meta content="themes-lab" name="author"/>
+    <!-- END META SECTION -->
+    <!-- BEGIN MANDATORY STYLE -->
+    <link href="{{ asset('assets/css/icons/icons.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/plugins.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/style.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/css/icons/font-awesome/css/font-awesome.min.css') }}">
+    <link rel="icon" href="{{ asset('assets/img/favicon3.png') }}">
+    <!-- END  MANDATORY STYLE -->
+    <!-- BEGIN PAGE LEVEL STYLE -->
+    {% block css %}
+
+    {% endblock %}
+    <link rel="stylesheet" href="{{ asset('assets/plugins/jnotify/jNotify.jquery.css') }}">
+    <!-- END PAGE LEVEL STYLE -->
+    <script src="{{ asset('assets/plugins/modernizr/modernizr-2.6.2-respond-1.1.0.min.js') }}"></script>
+</head>
+
+<body data-page="dashboard">
+<!-- BEGIN TOP MENU -->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#sidebar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a id="menu-medium" class="sidebar-toggle tooltips">
+                <i class="fa fa-outdent"></i>
+            </a>
+            <a class="navbar-brand" href="">
+                <img src="{{ asset('assets/img/logo.png') }}" alt="logo" width="165" height="20">
+            </a>
+        </div>
+        {% block titlepage %} {% endblock %}
+        <div class="navbar-collapse collapse">
+            <!-- BEGIN TOP NAVIGATION MENU -->
+            <ul class="nav navbar-nav pull-right header-menu">
+                <!-- BEGIN USER DROPDOWN -->
+                <li class="dropdown" id="user-header">
+                    <a href="#" class="dropdown-toggle c-white" data-toggle="dropdown" data-hover="dropdown"
+                       data-close-others="true">
+                        <img src="{{ asset('assets/img/avatars/avatar2.png') }}" alt="user avatar" width="30"
+                             class="p-r-5">
+                        <span class="username">{{ app.user.name }}</span>
+                        <i class="fa fa-angle-down p-r-10"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        {#<li>#}
+                        {#<a href="extra_profile.html">#}
+                        {#<i class="glyph-icon flaticon-account"></i> My Profile#}
+                        {#</a>#}
+                        {#</li>#}
+                        <li>
+                            <a href="">
+                                <i class="fa fa-money"></i> Dinero en casa: {{ app.user.dineroencasa }}
+                            </a>
+                            <a href="">
+                                <i class="fa fa-money"></i> Tarjeta: {{ app.user.tarjeta }}
+                            </a>
+                            <a href="">
+                                <i class="fa fa-money"></i> Gastos: {{ app.user.gastos }}
+                            </a>
+                        </li>
+                        {#<li>#}
+                        {#<a href="calendar.html">#}
+                        {#<i class="glyph-icon flaticon-settings21"></i> Account Settings#}
+                        {#</a>#}
+                        {#</li>#}
+                        <li class="dropdown-footer clearfix">
+                            <a href="javascript:;" class="toggle_fullscreen" title="Pantalla Completa">
+                                <i class="glyph-icon flaticon-fullscreen3"></i>
+                            </a>
+                            <a href="{{ path('logout') }}" title="Salir">
+                                <i class="fa fa-power-off"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- END USER DROPDOWN -->
+            </ul>
+            <!-- END TOP NAVIGATION MENU -->
+        </div>
+    </div>
+</nav>
+<!-- END TOP MENU -->
+<!-- BEGIN WRAPPER -->
+<div id="wrapper">
+    <!-- BEGIN MAIN SIDEBAR -->
+    {% block sidemenu %}
+
+    {% endblock %}
+    <!-- END MAIN SIDEBAR -->
+
+
+    <!-- BEGIN MAIN CONTENT -->
+    {% block content %}
+
+    {% endblock %}
+    <!-- END MAIN CONTENT -->
+
+</div>
+<!-- END WRAPPER -->
+
+<!-- BEGIN MANDATORY SCRIPTS -->
+<script src="{{ asset('assets/plugins/jquery-1.11.js') }}"></script>
+<script src="{{ asset('assets/plugins/jquery-migrate-1.2.1.js') }}"></script>
+<script src="{{ asset('assets/plugins/jquery-ui/jquery-ui-1.10.4.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/bootstrap/bootstrap.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/bootstrap-dropdown/bootstrap-hover-dropdown.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/bootstrap-select/bootstrap-select.js') }}"></script>
+{#<script src="{{ asset('assets/plugins/icheck/icheck.js') }}"></script>#}
+<script src="{{ asset('assets/plugins/mcustom-scrollbar/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/mmenu/js/jquery.mmenu.min.all.js') }}"></script>
+<script src="{{ asset('assets/plugins/nprogress/nprogress.js') }}"></script>
+<script src="{{ asset('assets/plugins/charts-sparkline/sparkline.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/breakpoints/breakpoints.js') }}"></script>
+<script src="{{ asset('assets/plugins/numerator/jquery-numerator.js') }}"></script>
+<script src="{{ asset('assets/plugins/fullcalendar/moment.min.js') }}"></script>
+<!-- END MANDATORY SCRIPTS -->
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+<script src="{{ asset('assets/plugins/jnotify/jNotify.jquery.min.js') }}"></script>
+<script src="{{ asset('assets/js/notifications.js') }}"></script>
+{% block javascript %}
+
+{% endblock %}
+<!-- END  PAGE LEVEL SCRIPTS -->
+<script src="{{ asset('assets/js/application.js') }}"></script>
+
+<script type="text/javascript">
+    $('.{{ activelink[1] }}').addClass('current');
+    $('#{{ activelink[0] }}').addClass('current active hasSub');
+
+    {#$('#vaciar').on('click', function () {#}
+        {#var data = {#}
+            {#tabla: $('#seleccionar-tabla').val()#}
+        {#};#}
+        {#if (data.tabla == '') {#}
+            {#jError(#}
+                    {#'<i class="fa fa-frown-o" style="padding-right:8px"></i> Debe seleccionar una tabla para vaciarla.', {#}
+                        {#HorizontalPosition: 'center',#}
+                        {#VerticalPosition: 'top',#}
+                        {#ShowOverlay: true,#}
+                        {#TimeShown: 4000,#}
+                        {#OpacityOverlay: 0.5,#}
+                        {#MinWidth: 300#}
+                    {#});#}
+        {#} else {#}
+            {#$('#vaciar').text('').append('<span class="fa fa-spinner fa-spin"></span>').attr('disabled', true);#}
+            {#$.ajax({#}
+                {#url: '{{ path('vaciar_tablas') }}',#}
+                {#type: 'post',#}
+                {#data: data,#}
+                {#success: function (response) {#}
+                    {#jError(#}
+                            {#'<i class="fa fa-frown-o" style="padding-right:8px"></i> ' + response, {#}
+                                {#HorizontalPosition: 'center',#}
+                                {#VerticalPosition: 'top',#}
+                                {#ShowOverlay: true,#}
+                                {#TimeShown: 4000,#}
+                                {#OpacityOverlay: 0.5,#}
+                                {#MinWidth: 300#}
+                            {#});#}
+                    {#$('#vaciar').text('Aceptar').attr('disabled', false);#}
+                {#},#}
+                {#error: function (error) {#}
+                    {#console.log(error);#}
+                {#}#}
+            {#});#}
+        {#}#}
+    {#});#}
+</script>
+
+</body>
+
+</html>

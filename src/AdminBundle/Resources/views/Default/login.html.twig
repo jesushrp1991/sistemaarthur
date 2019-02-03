@@ -1,0 +1,38 @@
+{% extends '::loginbase.html.twig' %}
+
+{% block formlogin %}
+    <div class="container" id="login-block">
+        <div class="row">
+            <div class="col-sm-6 col-md-4 col-sm-offset-3 col-md-offset-4">
+                <div class="login-box clearfix animated flipInY">
+                    <div class="page-icon animated bounceInDown">
+                        <img src="{{ asset('assets/img/account/user-icon.png') }}" alt="Key icon">
+                    </div>
+                    <div class="login-logo">
+                        <a>
+                            <img src="{{ asset('assets/img/widgets/pensils.png') }}" style="width: 100px" alt="Company Logo">
+                        </a>
+                    </div>
+                    <hr>
+                    <div class="login-form">
+                        <!-- BEGIN ERROR BOX -->
+                        {#{% if error %}#}
+                            {#<div class="alert alert-danger">#}
+                                {#<button type="button" class="close" data-dismiss="alert">×</button>#}
+                                {#<h4>Error!</h4>#}
+                                {#{{ error }}#}
+                            {#</div>#}
+                        {#{% endif %}#}
+                        <!-- END ERROR BOX -->
+                        <form action="{{ path('login_check') }}" method="post">
+                            <input type="text" placeholder="Nombre de usuario" name="_username" id="login_username" value="{{ last_username | default('') }}" class="input-field form-control user"/>
+                            <input type="password" placeholder="Contraseña" name="_password" id="login_password" class="input-field form-control password"/>
+                            <input type="hidden" name="_target_path" value="movil_show">
+                            <button type="submit" class="btn btn-login">Entrar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

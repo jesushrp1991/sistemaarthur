@@ -7,97 +7,26 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Miscelanea
  *
- * @ORM\Table()
+ * @ORM\Table(name="miscelanea")
  * @ORM\Entity
  */
 class Miscelanea extends Objeto
 {
+    //Propiedades de Miscelanea------------------------------------------------------------
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\ManyToOne(targetEntity = "AdminBundle\Entity\Especificacion", inversedBy = "miscelaneas")
+     * @ORM\JoinColumn(name="especificacion_id", referencedColumnName="id", onDelete = "CASCADE")
      */
-    private $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="categoria", type="string", length=255)
-     */
-    private $categoria;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="especificacion", type="string", length=255)
-     */
-    private $especificacion;
+    protected $especificaciones;
 
     /**
      * @var string
      *
      * @ORM\Column(name="descripcion", type="string", length=255)
      */
-    private $descripcion;
+    protected $descripcion;
 
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set categoria
-     *
-     * @param string $categoria
-     * @return Miscelanea
-     */
-    public function setCategoria($categoria)
-    {
-        $this->categoria = $categoria;
-
-        return $this;
-    }
-
-    /**
-     * Get categoria
-     *
-     * @return string 
-     */
-    public function getCategoria()
-    {
-        return $this->categoria;
-    }
-
-    /**
-     * Set especificacion
-     *
-     * @param string $especificacion
-     * @return Miscelanea
-     */
-    public function setEspecificacion($especificacion)
-    {
-        $this->especificacion = $especificacion;
-
-        return $this;
-    }
-
-    /**
-     * Get especificacion
-     *
-     * @return string 
-     */
-    public function getEspecificacion()
-    {
-        return $this->especificacion;
-    }
+    //Funciones de Miscelanea----------------------------------------------------------------------
 
     /**
      * Set descripcion
@@ -115,10 +44,39 @@ class Miscelanea extends Objeto
     /**
      * Get descripcion
      *
-     * @return string 
+     * @return string
      */
     public function getDescripcion()
     {
         return $this->descripcion;
+    }
+
+    /**
+     * Set especificaciones
+     *
+     * @param \AdminBundle\Entity\Especificacion $especificaciones
+     * @return Miscelanea
+     */
+    public function setEspecificaciones(\AdminBundle\Entity\Especificacion $especificaciones = null)
+    {
+        $this->especificaciones = $especificaciones;
+
+        return $this;
+    }
+
+    /**
+     * Get especificaciones
+     *
+     * @return \AdminBundle\Entity\Especificacion
+     */
+    public function getEspecificaciones()
+    {
+        return $this->especificaciones;
+    }
+
+    public function __toString()
+    {
+        return $this->getEspecificaciones()->getCategoria()->getNombre() . ' '
+            . $this->getEspecificaciones()->getNombre() . ' ' .$this->getDescripcion();
     }
 }

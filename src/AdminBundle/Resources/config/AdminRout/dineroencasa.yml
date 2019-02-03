@@ -1,0 +1,15 @@
+dineroencasa_add:
+  path:     /add/
+  defaults: { _controller: AdminBundle:DineroEnCasaTransaction:dineroencasaAdd }
+
+dineroencasa_delete:
+  path:     /delete/{id}/
+  defaults: { _controller: AdminBundle:DineroEnCasaTransaction:dineroencasaDelete }
+
+dineroencasa_edit:
+  path:     /edit/{id}/
+  defaults: { _controller: AdminBundle:DineroEnCasaTransaction:dineroencasaEdit }
+
+dineroencasa_show:
+  path:     /show/
+  defaults: { _controller: AdminBundle:DineroEnCasaTransaction:dineroencasaShow }

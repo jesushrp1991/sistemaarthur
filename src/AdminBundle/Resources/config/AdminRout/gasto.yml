@@ -1,0 +1,7 @@
+gasto_show:
+  path:     /show/
+  defaults: { _controller: AdminBundle:GastoTransaction:gastoShow }
+
+gasto_add:
+  path:     /add/
+  defaults: { _controller: AdminBundle:GastoTransaction:gastoAdd }

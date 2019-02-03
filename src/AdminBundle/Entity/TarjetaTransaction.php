@@ -43,12 +43,23 @@ class TarjetaTransaction
     private $monto;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="concepto", type="string", length=255)
+     */
+    private $concepto;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(name="credito", type="boolean")
      */
     private $credito;
 
+    public function __construct()
+    {
+        $this->credito = false;
+    }
 
     /**
      * Get id
@@ -150,5 +161,28 @@ class TarjetaTransaction
     public function getCredito()
     {
         return $this->credito;
+    }
+
+    /**
+     * Set concepto
+     *
+     * @param string $concepto
+     * @return TarjetaTransaction
+     */
+    public function setConcepto($concepto)
+    {
+        $this->concepto = $concepto;
+    
+        return $this;
+    }
+
+    /**
+     * Get concepto
+     *
+     * @return string 
+     */
+    public function getConcepto()
+    {
+        return $this->concepto;
     }
 }

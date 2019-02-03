@@ -1,7 +1,17 @@
+login:
+    path: /
+    defaults: { _controller: AdminBundle:User:login }
+
+_login:
+    path: /login/
+    defaults: { _controller: AdminBundle:User:login }
+
+login_check:
+    path: /login_check/
+
+logout:
+    path: /logout/
+
 admin:
     resource: "@AdminBundle/Resources/config/routing.yml"
-    prefix:   /
-
-app:
-    resource: "@AppBundle/Controller/"
-    type:     annotation
+    prefix:   /admin

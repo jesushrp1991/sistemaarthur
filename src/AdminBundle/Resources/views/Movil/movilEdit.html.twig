@@ -1,0 +1,314 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block css %}
+    <link href="{{ asset('assets/css/icons/icons.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/plugins.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/style.min.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block titlepage %}
+    <div class="navbar-center">Moviles</div> {% endblock %}
+
+{% block content %}
+    <div id="main-content">
+        <div class="page-title"><i class="icon-custom-left"></i>
+            <h3>Editar <strong>Movil</strong></h3>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form method="post" action="{{ path('movil_edit', {'id' : movil.id}) }}" class="form-horizontal" id="form-cliente" parsley-validate {{ form_enctype(form) }}>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Marca</label>
+                                        <div class="col-sm-9">
+                                            {{ form_widget(form.marca) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Cámara Frontal</label>
+                                        <div class="col-sm-9">
+                                            {{ form_widget(form.frontmpcam) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Modelo</label>
+                                        <div class="col-sm-9">
+                                            {{ form_widget(form.modelo) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Camara Trasera</label>
+                                        <div class="col-sm-9">
+                                            {{ form_widget(form.backmpcam) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Versión del SO</label>
+                                        <div class="col-sm-9">
+                                            {{ form_widget(form.androidversion) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">CPU</label>
+                                        <div class="col-sm-9">
+                                            {{ form_widget(form.cpu) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Batería(mAh)</label>
+                                        <div class="col-sm-3">
+                                            {{ form_widget(form.baterycapmah) }}
+                                        </div>
+                                        <label class="col-sm-1 control-label">Rápida</label>
+                                        <div class="col-sm-1">
+                                            {{ form_widget(form.baterycargarapida) }}
+                                        </div>
+                                        <label class="col-sm-2 control-label">Inalámbrica</label>
+                                        <div class="col-sm-1">
+                                            {{ form_widget(form.baterycargainalambrica) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Sensor de Huellas</label>
+                                        <div class="col-sm-9">
+                                            {{ form_widget(form.sensorhuella) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">RAM</label>
+                                        <div class="col-sm-9">
+                                            {{ form_widget(form.ram) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Resolucion</label>
+                                        <div class="col-sm-4">
+                                            {{ form_widget(form.screenresolutionwidth) }}
+                                        </div>
+                                        <div class="col-sm-1 control-label">
+                                            x
+                                        </div>
+                                        <div class="col-sm-4">
+                                            {{ form_widget(form.screenresolutionheight) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Pantalla</label>
+                                        <div class="col-sm-9">
+                                            {{ form_widget(form.screensize) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Densidad de Pixeles</label>
+                                        <div class="col-sm-9">
+                                            {{ form_widget(form.screendensity) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Proteccion de la Pantalla</label>
+                                        <div class="col-sm-9">
+                                            {{ form_widget(form.screenprotection) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Tipo de Pantalla</label>
+                                        <div class="col-sm-9">
+                                            {{ form_widget(form.screentipo) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Precio de Venta</label>
+                                        <div class="col-sm-9">
+                                            {{ form_widget(form.precioventa) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Núcleos del CPU</label>
+                                        <div class="col-sm-9">
+                                            {{ form_widget(form.cpucores) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Precio de Compra</label>
+                                        <div class="col-sm-9">
+                                            {{ form_widget(form.preciocompra) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Velocidad del CPU</label>
+                                        <div class="col-sm-9">
+                                            {{ form_widget(form.cpuspeed) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Capacidad Interna</label>
+                                        <div class="col-sm-9">
+                                            {{ form_widget(form.almacenamiento) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Presión de Pantalla</label>
+                                        <div class="col-sm-9">
+                                            {#{{ form_widget(form.screensensibleapresion) }}#}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Capacidad Externa</label>
+                                        <div class="col-sm-9">
+                                            {{ form_widget(form.microsd) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Cable</label>
+                                        <div class="col-sm-1">
+                                            {{ form_widget(form.accesoriocable) }}
+                                        </div>
+                                        <label class="col-sm-3 control-label">Cargador</label>
+                                        <div class="col-sm-1">
+                                            {{ form_widget(form.accesoriocargador) }}
+                                        </div>
+                                        <label class="col-sm-3 control-label">Manos Libres</label>
+                                        <div class="col-sm-1">
+                                            {{ form_widget(form.accesoriomanoslibres) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Resistencia al Agua</label>
+                                        <div class="col-sm-9">
+                                            {{ form_widget(form.waterresistant) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{ form_rest(form) }}
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="col-sm-9 col-sm-offset-3">
+                                        <div class="pull-right">
+                                            <button type="submit" class="btn btn-primary m-b-10"
+                                                    onclick="javascript:$('#form-cliente').parsley('validate');">Aceptar</button>
+                                            <button type="button"
+                                                    onclick="window.location = '{{ path('movil_show') }}';"
+                                                    class="btn btn-default m-b-10">Cancelar
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    <script src="{{ asset('assets/plugins/parsley/parsley.js') }}"></script>
+    <script src="{{ asset('assets/plugins/parsley/parsley.extend.js') }}"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#provincia').on('change', function () {
+                var data = {
+                    provincia_id: $(this).val()
+                };
+
+                if (data['provincia_id'] !== '') {
+                    $.ajax({
+                        url: '',
+                        type: 'post',
+                        data: data,
+                        success: function (response) {
+                            var $municipio_selector = $('#seleccionar-provincia');
+                            $municipio_selector.html('<option value="">Seleccione un Municipio</option>');
+                            for (var i = 0; i < response.length; i++) {
+                                $municipio_selector.append('<option value="' + response[i].id + '">' + response[i].nombre + '</option>')
+                            }
+                            $('#seleccionar-provincia').removeAttr('disabled');
+                            $municipio_selector.selectpicker('refresh');
+                            if (response.length == 0) {
+                                $municipio_selector.html('<option value="">No se encontraron municipios</option>');
+                                $municipio_selector.selectpicker('refresh');
+                            }
+                        },
+                        error: function (error) {
+                            console.log(error);
+                        }
+                    });
+                } else {
+                    $('#seleccionar-provincia').attr('disabled', true);
+                }
+            });
+        });
+    </script>
+{% endblock %}

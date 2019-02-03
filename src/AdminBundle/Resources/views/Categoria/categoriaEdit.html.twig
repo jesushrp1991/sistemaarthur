@@ -1,0 +1,67 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block css %}
+    <link href="{{ asset('assets/css/icons/icons.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/plugins.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/style.min.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block titlepage %}
+    <div class="navbar-center">Categorías</div> {% endblock %}
+
+{% block content %}
+    <div id="main-content">
+        <div class="page-title"><i class="icon-custom-left"></i>
+            <h3>Editar <strong>Categoría</strong></h3>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form action="{{ path('categoria_edit', {'id': categoria.id}) }}" method="post" id="form1" class="form-horizontal"
+                              parsley-validate {{ form_enctype(form) }}>
+                            {{ form_errors(form) }}
+                            <div class="row">
+                                <div class="col-md-3"></div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Nombre
+                                        </label>
+                                        <div class="col-sm-9">
+                                            {{ form_widget(form.nombre) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3"></div>
+                            </div>
+                            {{ form_rest(form) }}
+                            <div class="row">
+                                <div class="col-md-3"></div>
+                                <div class="col-md-6">
+                                    <div class="col-sm-9 col-sm-offset-3">
+                                        <div>
+                                            <button type="submit" class="btn btn-primary m-b-10"
+                                                    onclick="javascript:$('#form1').parsley('validate');">Aceptar
+                                            </button>
+                                            <button type="button"
+                                                    onclick="window.location = '{{ path('categoria_show') }}';"
+                                                    class="btn btn-default m-b-10">Cancelar
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    <script src="{{ asset('assets/plugins/parsley/parsley.js') }}"></script>
+    <script src="{{ asset('assets/plugins/parsley/parsley.extend.js') }}"></script>
+{% endblock %}

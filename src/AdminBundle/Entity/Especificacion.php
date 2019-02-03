@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Especificacion
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AdminBundle\Entity\Repository\EspecificacionRepository")
  */
 class Especificacion
 {
@@ -29,19 +29,15 @@ class Especificacion
     private $nombre;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="categoria", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity = "AdminBundle\Entity\Categoria", inversedBy = "especificaciones")
+     * @ORM\JoinColumn(name="categoria_id", referencedColumnName="id", onDelete = "CASCADE")
      */
     private $categoria;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="miscelaneas", type="string", length=255)
+     * @ORM\OneToMany(targetEntity= "AdminBundle\Entity\Miscelanea", mappedBy="especificaciones")
      */
     private $miscelaneas;
-
 
     /**
      * Get id
@@ -79,46 +75,68 @@ class Especificacion
     /**
      * Set categoria
      *
-     * @param string $categoria
+     * @param \AdminBundle\Entity\Categoria $categoria
      * @return Especificacion
      */
-    public function setCategoria($categoria)
+    public function setCategoria(\AdminBundle\Entity\Categoria $categoria = null)
     {
         $this->categoria = $categoria;
-
+    
         return $this;
     }
 
     /**
      * Get categoria
      *
-     * @return string 
+     * @return \AdminBundle\Entity\Categoria 
      */
     public function getCategoria()
     {
         return $this->categoria;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->miscelaneas = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
-     * Set miscelaneas
+     * Add miscelaneas
      *
-     * @param string $miscelaneas
+     * @param \AdminBundle\Entity\Miscelanea $miscelaneas
      * @return Especificacion
      */
-    public function setMiscelaneas($miscelaneas)
+    public function addMiscelanea(\AdminBundle\Entity\Miscelanea $miscelaneas)
     {
-        $this->miscelaneas = $miscelaneas;
-
+        $this->miscelaneas[] = $miscelaneas;
+    
         return $this;
+    }
+
+    /**
+     * Remove miscelaneas
+     *
+     * @param \AdminBundle\Entity\Miscelanea $miscelaneas
+     */
+    public function removeMiscelanea(\AdminBundle\Entity\Miscelanea $miscelaneas)
+    {
+        $this->miscelaneas->removeElement($miscelaneas);
     }
 
     /**
      * Get miscelaneas
      *
-     * @return string 
+     * @return \Doctrine\Common\Collections\Collection 
      */
     public function getMiscelaneas()
     {
         return $this->miscelaneas;
+    }
+
+    public function __toString()
+    {
+        return $this->getNombre();
     }
 }

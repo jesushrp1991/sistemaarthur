@@ -29,9 +29,8 @@ class VentaTransaction
     private $fechaHora;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="objeto", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity = "AdminBundle\Entity\Objeto", inversedBy = "ventatransactiones")
+     * @ORM\JoinColumn(name="objeto_id", referencedColumnName="id", onDelete = "CASCADE")
      */
     private $objeto;
 
@@ -52,9 +51,9 @@ class VentaTransaction
     /**
      * @var integer
      *
-     * @ORM\Column(name="cantidadcomprada", type="integer")
+     * @ORM\Column(name="cantidadventa", type="integer")
      */
-    private $cantidadcomprada;
+    private $cantidadventa;
 
     /**
      * @var string
@@ -63,6 +62,10 @@ class VentaTransaction
      */
     private $comprador;
 
+    public function __construct()
+    {
+        $this->deuda = 0;
+    }
 
     /**
      * Get id
@@ -95,29 +98,6 @@ class VentaTransaction
     public function getFechaHora()
     {
         return $this->fechaHora;
-    }
-
-    /**
-     * Set objeto
-     *
-     * @param string $objeto
-     * @return VentaTransaction
-     */
-    public function setObjeto($objeto)
-    {
-        $this->objeto = $objeto;
-
-        return $this;
-    }
-
-    /**
-     * Get objeto
-     *
-     * @return string 
-     */
-    public function getObjeto()
-    {
-        return $this->objeto;
     }
 
     /**
@@ -167,29 +147,6 @@ class VentaTransaction
     }
 
     /**
-     * Set cantidadcomprada
-     *
-     * @param integer $cantidadcomprada
-     * @return VentaTransaction
-     */
-    public function setCantidadcomprada($cantidadcomprada)
-    {
-        $this->cantidadcomprada = $cantidadcomprada;
-
-        return $this;
-    }
-
-    /**
-     * Get cantidadcomprada
-     *
-     * @return integer 
-     */
-    public function getCantidadcomprada()
-    {
-        return $this->cantidadcomprada;
-    }
-
-    /**
      * Set comprador
      *
      * @param string $comprador
@@ -210,5 +167,51 @@ class VentaTransaction
     public function getComprador()
     {
         return $this->comprador;
+    }
+
+    /**
+     * Set cantidadventa
+     *
+     * @param integer $cantidadventa
+     * @return VentaTransaction
+     */
+    public function setCantidadventa($cantidadventa)
+    {
+        $this->cantidadventa = $cantidadventa;
+    
+        return $this;
+    }
+
+    /**
+     * Get cantidadventa
+     *
+     * @return integer 
+     */
+    public function getCantidadventa()
+    {
+        return $this->cantidadventa;
+    }
+
+    /**
+     * Set objeto
+     *
+     * @param \AdminBundle\Entity\Objeto $objeto
+     * @return VentaTransaction
+     */
+    public function setObjeto(\AdminBundle\Entity\Objeto $objeto = null)
+    {
+        $this->objeto = $objeto;
+    
+        return $this;
+    }
+
+    /**
+     * Get objeto
+     *
+     * @return \AdminBundle\Entity\Objeto 
+     */
+    public function getObjeto()
+    {
+        return $this->objeto;
     }
 }

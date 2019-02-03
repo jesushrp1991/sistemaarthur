@@ -1,0 +1,27 @@
+movil_add:
+  path:     /add/
+  defaults: { _controller: AdminBundle:Movil:movilAdd }
+
+movil_edit:
+  path:     /edit/{id}/
+  defaults: { _controller: AdminBundle:Movil:movilEdit }
+
+movil_show:
+  path:     /show/
+  defaults: { _controller: AdminBundle:Movil:movilShow }
+
+movil_show_one:
+  path:     /show/mobile/{id}/
+  defaults: { _controller: AdminBundle:Movil:movilShowOne }
+
+movil_delete:
+  path:     /delete/{id}/
+  defaults: { _controller: AdminBundle:Movil:movilDelete }
+
+movil_comprar:
+  path:     /comprar/
+  defaults: { _controller: AdminBundle:Movil:movilComprar }
+
+movil_venta:
+  path:     /venta/
+  defaults: { _controller: AdminBundle:Movil:movilVenta }

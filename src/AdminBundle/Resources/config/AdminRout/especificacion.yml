@@ -1,0 +1,15 @@
+especificacion_add:
+  path:     /add/
+  defaults: { _controller: AdminBundle:Especificacion:especificacionAdd }
+
+especificacion_edit:
+  path:     /edit/{id}/
+  defaults: { _controller: AdminBundle:Especificacion:especificacionEdit }
+
+especificacion_show:
+  path:     /show/
+  defaults: { _controller: AdminBundle:Especificacion:especificacionShow }
+
+especificacion_delete:
+  path:     /delete/{id}/
+  defaults: { _controller: AdminBundle:Especificacion:especificacionDelete }

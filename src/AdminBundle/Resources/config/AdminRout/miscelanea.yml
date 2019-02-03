@@ -1,0 +1,23 @@
+miscelanea_add:
+  path:     /add/
+  defaults: { _controller: AdminBundle:Miscelanea:miscelaneaAdd }
+
+miscelanea_delete:
+  path:     /delete/{id}/
+  defaults: { _controller: AdminBundle:Miscelanea:miscelaneaDelete }
+
+miscelanea_edit:
+  path:     /edit/{id}/
+  defaults: { _controller: AdminBundle:Miscelanea:miscelaneaEdit }
+
+miscelanea_show:
+  path:     /show/
+  defaults: { _controller: AdminBundle:Miscelanea:miscelaneaShow }
+
+miscelanea_comprar:
+  path:     /comprar/
+  defaults: { _controller: AdminBundle:Miscelanea:miscelaneaComprar }
+
+miscelanea_venta:
+  path:     /venta/
+  defaults: { _controller: AdminBundle:Miscelanea:miscelaneaVenta }

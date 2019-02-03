@@ -1,0 +1,7 @@
+deuda_show:
+  path:     /show/
+  defaults: { _controller: AdminBundle:DeudaTransaction:deudaShow }
+
+deuda_edit:
+  path:     /edit/{id}/
+  defaults: { _controller: AdminBundle:DeudaTransaction:deudaEdit }

@@ -1,0 +1,173 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block css %}
+    <link href="{{ asset('assets/css/icons/icons.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/plugins.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/style.min.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block titlepage %}
+    <div class="navbar-center">Misceláneas</div> {% endblock %}
+
+{% block content %}
+    <div id="main-content">
+        <div class="page-title"><i class="icon-custom-left"></i>
+            <h3>Editar <strong>Miscelánea</strong></h3>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form action="{{ path('miscelanea_edit', {'id' : miscelanea.id}) }}" method="post" id="form1"
+                              class="form-horizontal"
+                              parsley-validate {{ form_enctype(form) }}>
+                            {{ form_errors(form) }}
+                            <div class="row">
+                                <div class="col-md-3"></div>
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">Categoría</label>
+                                                <div class="col-sm-9">
+                                                    {{ form_widget(form.categoria) }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">Especificación</label>
+                                                <div class="col-sm-9">
+                                                    {{ form_widget(form.especificaciones) }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">Descripción</label>
+                                                <div class="col-sm-9">
+                                                    {{ form_widget(form.descripcion) }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">Precio de Compra</label>
+                                                <div class="col-sm-9">
+                                                    {{ form_widget(form.preciocompra) }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">Precio de Venta</label>
+                                                <div class="col-sm-9">
+                                                    {{ form_widget(form.precioventa) }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3"></div>
+                            </div>
+                            {{ form_rest(form) }}
+                            <div class="row">
+                                <div class="col-md-3"></div>
+                                <div class="col-md-6">
+                                    <div class="col-sm-9 col-sm-offset-3">
+                                        <div>
+                                            <button type="submit" class="btn btn-primary m-b-10"
+                                                    onclick="javascript:$('#form1').parsley('validate');">Aceptar
+                                            </button>
+                                            <button type="button"
+                                                    onclick="window.location = '{{ path('miscelanea_show') }}';"
+                                                    class="btn btn-default m-b-10">Cancelar
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    <script src="{{ asset('assets/plugins/parsley/parsley.js') }}"></script>
+    <script src="{{ asset('assets/plugins/parsley/parsley.extend.js') }}"></script>
+    <script type="text/javascript">
+        $(function () {
+            window.onload = function () {
+                $("#{{ form.categoria.vars.id }} option[value='{{ miscelanea.especificaciones.categoria.id }}']").attr('selected',true);
+                $("#{{ form.categoria.vars.id }}").selectpicker('refresh');
+                var data = {
+                    categoria_id: {{ miscelanea.especificaciones.categoria.id }}
+                };
+                var $especificacion = $('#{{ form.especificaciones.vars.id }}');
+                $especificacion.html('<option value="" data-icon="fa fa-spinner fa-spin">Cargando...</option>').selectpicker('refresh');
+                $.ajax({
+                    url: '{{ path('categoria_get_especificaciones') }}',
+                    type: 'post',
+                    data: data,
+                    success: function (response) {
+                        $especificacion.html('<option value="">Seleccione una especificación</option>');
+                        for (var i = 0; i < response.length; i++) {
+                            if (response[i].id === {{ miscelanea.especificaciones.id }})
+                                $especificacion.append('<option value="' + response[i].id + '" selected>' + response[i].nombre + '</option>');
+                            else
+                                $especificacion.append('<option value="' + response[i].id + '">' + response[i].nombre + '</option>');
+                        }
+                        $especificacion.selectpicker('refresh');
+                        if (response.length == 0) {
+                            $especificacion.html('<option value="">No se encontraron especificaciones</option>');
+                            $especificacion.selectpicker('refresh');
+                        }
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
+            };
+
+
+            $('#{{ form.categoria.vars.id }}').on('change', function () {
+                var data = {
+                    categoria_id: $(this).val()
+                };
+
+                if (data['provincia_id'] !== '') {
+                    var $especificacion = $('#{{ form.especificaciones.vars.id }}');
+                    $especificacion.html('<option value="" data-icon="fa fa-spinner fa-spin">Cargando...</option>').selectpicker('refresh');
+                    $.ajax({
+                        url: '{{ path('categoria_get_especificaciones') }}',
+                        type: 'post',
+                        data: data,
+                        success: function (response) {
+                            console.log(response);
+                            $especificacion.html('<option value="">Seleccione una especificación</option>');
+                            for (var i = 0; i < response.length; i++) {
+                                $especificacion.append('<option value="' + response[i].id + '">' + response[i].nombre + '</option>')
+                            }
+                            $especificacion.removeAttr('disabled');
+                            $especificacion.selectpicker('refresh');
+                            if (response.length == 0) {
+                                $especificacion.html('<option value="">No se encontraron especificaciones</option>');
+                                $especificacion.selectpicker('refresh');
+                            }
+                        },
+                        error: function (error) {
+                            console.log(error);
+                        }
+                    });
+                } else {
+                    $('#{{ form.especificaciones.vars.id }}').attr('disabled', true);
+                }
+            });
+        });
+    </script>
+{% endblock %}

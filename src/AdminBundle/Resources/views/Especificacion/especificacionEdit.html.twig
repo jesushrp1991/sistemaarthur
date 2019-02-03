@@ -1,0 +1,86 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('assets/plugins/jquery-steps/jquery.steps.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/datetimepicker/jquery.datetimepicker.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css') }}">
+{% endblock %}
+
+{% block titlepage %}
+    <div class="navbar-center">Especificaciones</div> {% endblock %}
+
+{% block content %}
+    <div id="main-content">
+        <div class="page-title"><i class="icon-custom-left"></i>
+            <h3>Editar <strong>Especificación</strong></h3>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form action="{{ path('especificacion_edit', {'id' : especificacion.id}) }}" id="form-gasto" method="post"
+                              class="form-horizontal"
+                              parsley-validate {{ form_enctype(form) }}>
+                            {{ form_errors(form) }}
+                            <div class="row">
+                                <div class="col-md-3"></div>
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">Nombre</label>
+                                                <div class="col-sm-9">
+                                                    {{ form_widget(form.nombre) }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">Categoría</label>
+                                                <div class="col-sm-9">
+                                                    {{ form_widget(form.categoria) }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3"></div>
+                            </div>
+                            {{ form_rest(form) }}
+                            <div class="row">
+                                <div class="col-md-3 col-sm-3 col-xs-3"></div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="col-sm-9 col-sm-offset-3">
+                                        <div>
+                                            <button type="submit"
+                                                    onclick="javascript:$('#form-gasto').parsley('validate')"
+                                                    class="btn btn-primary m-b-10">Agregar
+                                            </button>
+                                            <button type="button"
+                                                    onclick="window.location = '{{ path('especificacion_show') }}';"
+                                                    class="btn btn-default m-b-10">Cancelar
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-3"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    <script src="{{ asset('assets/plugins/bootstrap-switch/bootstrap-switch.js') }}"></script>
+    <script src="{{ asset('assets/plugins/bootstrap-progressbar/bootstrap-progressbar.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables/dataTables.bootstrap.js') }}"></script>
+    <script src="{{ asset('assets/plugins/parsley/parsley.js') }}"></script>
+    <script src="{{ asset('assets/plugins/parsley/parsley.extend.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datetimepicker/jquery.datetimepicker.js') }}"></script>
+    {#<script src="{{ asset('assets/plugins/bootstrap-datepicker/bootstrap-datepicker.js') }}"></script>#}
+    <script src="{{ asset('assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js') }}"></script>
+{% endblock %}

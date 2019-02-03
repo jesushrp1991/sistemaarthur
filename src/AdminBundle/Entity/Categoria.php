@@ -27,6 +27,11 @@ class Categoria
      * @ORM\Column(name="nombre", type="string", length=255)
      */
     private $nombre;
+
+        /**
+         * @ORM\OneToMany(targetEntity= "AdminBundle\Entity\Especificacion", mappedBy="categoria")
+         */
+    protected $especificaciones;
    
     /**
      * Get id
@@ -59,5 +64,50 @@ class Categoria
     public function getNombre()
     {
         return $this->nombre;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->especificaciones = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add especificaciones
+     *
+     * @param \AdminBundle\Entity\Especificacion $especificaciones
+     * @return Categoria
+     */
+    public function addEspecificacione(\AdminBundle\Entity\Especificacion $especificaciones)
+    {
+        $this->especificaciones[] = $especificaciones;
+    
+        return $this;
+    }
+
+    /**
+     * Remove especificaciones
+     *
+     * @param \AdminBundle\Entity\Especificacion $especificaciones
+     */
+    public function removeEspecificacione(\AdminBundle\Entity\Especificacion $especificaciones)
+    {
+        $this->especificaciones->removeElement($especificaciones);
+    }
+
+    /**
+     * Get especificaciones
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEspecificaciones()
+    {
+        return $this->especificaciones;
+    }
+
+    public function __toString()
+    {
+        return $this->getNombre();
     }
 }

@@ -1,0 +1,125 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('assets/plugins/datetimepicker/jquery.datetimepicker.css') }}">
+    <link href="{{ asset('assets/plugins/pickadate/themes/default.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/plugins/pickadate/themes/default.date.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/plugins/pickadate/themes/default.time.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css') }}">
+{% endblock %}
+
+{% block titlepage %}
+    <div class="navbar-center">Deudas</div> {% endblock %}
+
+{% block content %}
+    <div id="main-content">
+        <div class="page-title"><i class="icon-custom-left"></i>
+            <h3>Saldar <strong>Deuda</strong></h3>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form action="{{ path('deuda_edit', {'id':deuda.id}) }}" method="post" id="form1" class="form-horizontal"
+                              parsley-validate {{ form_enctype(form) }}>
+                            {{ form_errors(form) }}
+                            <div class="row">
+                                <div class="col-md-3"></div>
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">Fecha/HOra</label>
+                                                <div class="col-sm-9">
+                                                    {{ form_widget(form.fechaHora) }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">Descripción</label>
+                                                <div class="col-sm-9">
+                                                    {{ form_widget(form.descripcion) }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">Concepto</label>
+                                                <div class="col-sm-9">
+                                                    {{ form_widget(form.concepto) }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">Monto inicial</label>
+                                                <div class="col-sm-9">
+                                                    {{ form_widget(form.montoinicial) }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">Monto Restante</label>
+                                                <div class="col-sm-9">
+                                                    {{ form_widget(form.montorestante) }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">Deudor</label>
+                                                <div class="col-sm-9">
+                                                    {{ form_widget(form.deudor) }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3"></div>
+                            </div>
+                            {{ form_rest(form) }}
+                            <div class="row">
+                                <div class="col-md-3"></div>
+                                <div class="col-md-6">
+                                    <div class="col-sm-9 col-sm-offset-3">
+                                        <div>
+                                            <button type="submit" class="btn btn-primary m-b-10"
+                                                    onclick="javascript:$('#form1').parsley('validate');">Aceptar
+                                            </button>
+                                            <button type="button"
+                                                    onclick="window.location = '{{ path('deuda_show') }}';"
+                                                    class="btn btn-default m-b-10">Cancelar
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    <script src="{{ asset('assets/plugins/parsley/parsley.js') }}"></script>
+    <script src="{{ asset('assets/plugins/parsley/parsley.extend.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datetimepicker/jquery.datetimepicker.js') }}"></script>
+    <script src="{{ asset('assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js') }}"></script>
+    <script src="{{ asset('assets/plugins/pickadate/picker.js') }}"></script>
+    <script src="{{ asset('assets/plugins/pickadate/picker.date.js') }}"></script>
+    <script src="{{ asset('assets/plugins/pickadate/picker.time.js') }}"></script>
+    <script type="text/javascript">
+        {#$('#{{ form.fechaHora.vars.id }}').datetimepicker({#}
+            {#format:'Y-m-d h:i a',#}
+            {#formatTime:'h:i a',#}
+            {#lang: 'es',#}
+            {#step: 1,#}
+            {#value: '{{ 'now' | date('Y-m-d h:i a') }}'#}
+        {#});#}
+    </script>
+{% endblock %}

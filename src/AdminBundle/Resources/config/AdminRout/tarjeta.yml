@@ -1,0 +1,15 @@
+tarjeta_add:
+  path:     /add/
+  defaults: { _controller: AdminBundle:TarjetaTransaction:tarjetaAdd }
+
+tarjeta_edit:
+  path:     /edit/{id}/
+  defaults: { _controller: AdminBundle:TarjetaTransaction:tarjetaEdit }
+
+tarjeta_show:
+  path:     /show/
+  defaults: { _controller: AdminBundle:TarjetaTransaction:tarjetaShow }
+
+tarjeta_delete:
+  path:     /delete/{id}
+  defaults: { _controller: AdminBundle:TarjetaTransaction:tarjetaDelete }

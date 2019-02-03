@@ -1,0 +1,15 @@
+comprar_add:
+  path:     /add/
+  defaults: { _controller: AdminBundle:ComprarTransaction:comprarAdd }
+
+comprar_edit:
+  path:     /edit/{id}/
+  defaults: { _controller: AdminBundle:ComprarTransaction:comprarEdit }
+
+comprar_show:
+  path:     /show/
+  defaults: { _controller: AdminBundle:ComprarTransaction:comprarShow }
+
+comprar_delete:
+  path:     /delete/{id}/
+  defaults: { _controller: AdminBundle:ComprarTransaction:comprarDelete }

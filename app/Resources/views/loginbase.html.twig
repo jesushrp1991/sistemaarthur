@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+{#<!--[if lt IE 7]>      <html class="no-js sidebar-large lt-ie9 lt-ie8 lt-ie7"> <![endif]-->#}
+{#<!--[if IE 7]>         <html class="no-js sidebar-large lt-ie9 lt-ie8"> <![endif]-->#}
+{#<!--[if IE 8]>         <html class="no-js sidebar-large lt-ie9"> <![endif]-->#}
+<!--[if gt IE 8]><!-->
+<html class="no-js sidebar-large"> <!--<![endif]-->
+
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8"/><!-- /Added by HTTrack -->
+<head>
+    <!-- BEGIN META SECTION -->
+    <meta charset="utf-8">
+    <title>Control de Artículos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="description"/>
+    <meta content="themes-lab" name="author"/>
+    <!-- END META SECTION -->
+    <!-- BEGIN MANDATORY STYLE -->
+    <link href="{{ asset('assets/css/icons/icons.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/plugins.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/style.min.css') }}" rel="stylesheet">
+    <link rel="icon" href="{{ asset('assets/img/favicon3.png') }}">
+    <!-- END  MANDATORY STYLE -->
+    <!-- BEGIN PAGE LEVEL STYLE -->
+    <link href="{{ asset('assets/css/animate-custom.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/jnotify/jNotify.jquery.css') }}">
+    <!-- END PAGE LEVEL STYLE -->
+    <script src="{{ asset('assets/plugins/modernizr/modernizr-2.6.2-respond-1.1.0.min.js') }}"></script>
+</head>
+
+<body class="login fade-in" data-page="login">
+<!-- BEGIN LOGIN BOX -->
+{% block formlogin %}
+
+{% endblock %}
+<!-- END LOCKSCREEN BOX -->
+<!-- BEGIN MANDATORY SCRIPTS -->
+<script src="{{ asset('assets/plugins/jquery-1.11.js') }}"></script>
+<script src="{{ asset('assets/plugins/jquery-migrate-1.2.1.js') }}"></script>
+<script src="{{ asset('assets/plugins/jquery-ui/jquery-ui-1.10.4.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/bootstrap/bootstrap.min.js') }}"></script>
+<!-- END MANDATORY SCRIPTS -->
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+<script src="{{ asset('assets/plugins/backstretch/backstretch.min.js') }}"></script>
+<script src="{{ asset('assets/js/account.js') }}"></script>
+<script src="{{ asset('assets/plugins/jnotify/jNotify.jquery.min.js') }}"></script>
+<script src="{{ asset('assets/js/notifications.js') }}"></script>
+<!-- END PAGE LEVEL SCRIPTS -->
+
+<script type="text/javascript">
+    {% if error %}
+    jError(
+            '<i class="fa fa-frown-o" style="padding-right:8px"></i> El nombre de usuario la contraseña son inválidos.', {
+                HorizontalPosition: 'center',
+                VerticalPosition: 'top',
+                ShowOverlay: false,
+                TimeShown: 3000,
+                OpacityOverlay: 0.5,
+                MinWidth: 300
+            });
+    {% endif %}
+</script>
+</body>
+
+</html>
